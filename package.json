@@ -1,0 +1,27 @@
+{
+  "name": "thwip-azure",
+  "version": "1.0.0",
+  "description": "This is Thwip except in the cloud.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Br3ttl3y/Thwip-Azure.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Br3ttl3y/Thwip-Azure/issues"
+  },
+  "homepage": "https://github.com/Br3ttl3y/Thwip-Azure#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "eslint": "^9.20.1",
+    "globals": "^15.15.0",
+    "jest": "^29.7.0"
+  }
+}
