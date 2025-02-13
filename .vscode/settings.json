@@ -1,0 +1,5 @@
+// You should use Prettier
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
+}
