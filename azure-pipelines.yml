@@ -4,16 +4,24 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
-
+  branches:
+    include:
+      - feature/*
 pool:
-  vmImage: ubuntu-latest
+  vmImage: "ubuntu-latest"
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  - script: echo "Starting CI Pipeline..."
+    displayName: "Start"
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - script: npm ci
+    displayName: "Install Dependencies"
+
+  - script: npm run lint
+    displayName: "Run Linter"
+
+  - script: npm test -- --ci --coverage
+    displayName: "Run Tests"
+
+  - script: echo "Build and tests completed successfully."
+    displayName: "Finish"
