@@ -23,5 +23,17 @@ steps:
   - script: npm test -- --ci --coverage
     displayName: "Run Tests"
 
+  - task: PublishTestResults@2
+    displayName: "Publish Test & Coverage Results"
+    inputs:
+      testResultsFiles: "**/*junit.xml"
+      testRunTitle: "Unit Tests"
+      mergeTestResults: true
+
+  - task: PublishCodeCoverageResults@2
+    displayName: "Publish Code Coverage"
+    inputs:
+      summaryFileLocation: "$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml"
+
   - script: echo "Build and tests completed successfully."
     displayName: "Finish"
