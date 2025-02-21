@@ -10,30 +10,40 @@ trigger:
 pool:
   vmImage: "ubuntu-latest"
 
-steps:
-  - script: echo "Starting CI Pipeline..."
-    displayName: "Start"
+jobs:
+  - job: Build
+    displayName: "Build"
+    steps:
+      - script: echo "Starting CI Pipeline..."
+        displayName: "Start"
 
-  - script: npm ci
-    displayName: "Install Dependencies"
+      - script: npm ci
+        displayName: "Install Dependencies"
 
-  - script: npm run lint
-    displayName: "Run Linter"
+  - job: Lint
+    displayName: "Lint"
+    steps:
+      - script: npm run lint
+        displayName: "Run Linter"
 
-  - script: npm test -- --ci --coverage
-    displayName: "Run Tests"
+  - job: Test
+    displayName: "Test"
+    dependsOn: Build
+    steps:
+      - script: npm test -- --ci --coverage
+        displayName: "Run Tests"
 
-  - task: PublishTestResults@2
-    displayName: "Publish Test & Coverage Results"
-    inputs:
-      testResultsFiles: "**/*junit.xml"
-      testRunTitle: "Unit Tests"
-      mergeTestResults: true
+      - task: PublishTestResults@2
+        displayName: "Publish Test & Coverage Results"
+        inputs:
+          testResultsFiles: "**/*junit.xml"
+          testRunTitle: "Unit Tests"
+          mergeTestResults: true
 
-  - task: PublishCodeCoverageResults@2
-    displayName: "Publish Code Coverage"
-    inputs:
-      summaryFileLocation: "$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml"
+      - task: PublishCodeCoverageResults@2
+        displayName: "Publish Code Coverage"
+        inputs:
+          summaryFileLocation: "$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml"
 
-  - script: echo "Build and tests completed successfully."
-    displayName: "Finish"
+      - script: echo "Build and tests completed successfully."
+        displayName: "Finish"
