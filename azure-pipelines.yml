@@ -18,6 +18,11 @@ steps:
   - script: echo "Starting CI Pipeline..."
     displayName: "Start"
 
+  - script: |
+      echo "MARVEL_PUBLIC_KEY: $MARVEL_PUBLIC_KEY"
+      echo "MARVEL_PRIVATE_KEY: $MARVEL_PRIVATE_KEY"
+    displayName: "Print Environment Variables"
+
   - script: npm ci
     displayName: "Install Dependencies"
 
