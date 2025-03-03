@@ -1,7 +1,7 @@
 const date = require("../utils/date");
 const { getMarvelApiData } = require("../utils/marvelApi");
 const API_URLS = require("../constants/marvelApiUrls");
-const API_CONST = require("../constants/MarvelApiConstants");
+const API_CONST = require("../constants/marvelApiConstants");
 
 module.exports = async function (context) {
   if (typeof context.log !== "function") {
