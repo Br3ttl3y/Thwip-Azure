@@ -2,7 +2,7 @@
   "name": "thwip-azure",
   "version": "1.0.0",
   "description": "This is Thwip except in the cloud.",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "jest --coverage",
     "lint": "eslint",
@@ -22,6 +22,8 @@
   "homepage": "https://github.com/Br3ttl3y/Thwip-Azure#readme",
   "devDependencies": {
     "@eslint/js": "^9.20.0",
+    "axios": "^1.8.1",
+    "dotenv": "^16.4.7",
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-jest": "^28.11.0",
@@ -32,6 +34,7 @@
     "jest": "^29.7.0",
     "jest-junit": "^16.0.0",
     "lint-staged": "^15.4.3",
+    "md5": "^2.3.0",
     "prettier": "^3.5.1"
   },
   "lint-staged": {
@@ -42,5 +45,8 @@
     "**/*.{js,jsx,}": [
       "jest --bail --findRelatedTests"
     ]
+  },
+  "dependencies": {
+    "@azure/functions": "^4.6.1"
   }
 }
